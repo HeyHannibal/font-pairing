@@ -3,7 +3,6 @@ import Font from './components/Font';
 
 
 function App() {
-  
   return (
     <div id="app">
      <Font/>

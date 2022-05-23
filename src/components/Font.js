@@ -1,67 +1,67 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import WebFont from "webfontloader";
-
+import { allGoogleFonts } from "../allGoogleFonts";
 import Search from "./search";
+import TemplateView from "./tepmplateView";
 
 export default function Font() {
-  const [allFonts, setAllFonts] = useState([]);
+  const [allFonts, setAllFonts] = useState(allGoogleFonts);
   const [headerFont, setHeaderFont] = useState("Courier New");
 
+  let doOnce = true;
   useEffect(() => {
-    if (allFonts.length <= 0)
-      fetch(
-        "https://content-webfonts.googleapis.com/v1/webfonts?sort=popularity&key=AIzaSyDW0w6ucuBcNQXgzhBmyuWXLiDn5R5MqdM"
-      )
-        .then((res) => res.json())
-        .then((res) =>
-          setAllFonts(res.items.slice(0, 200).map((font) => font.family))
-        );
-    if (allFonts.length > 0) {
+    console.log("usedEffect");
+    if (allFonts.length > 0 && doOnce) {
+      doOnce = false;
       WebFont.load({
         google: {
-          families: allFonts,
+          families: allFonts.slice(0, 300),
         },
       });
     }
   });
 
-  function conThis() {
-    console.log(allFonts);
-  }
-
   function changeHeaderFont(e) {
-    console.log(e.target.textContent);
     setHeaderFont(e.target.textContent);
   }
 
-  return (
-    <div>
-    <nav>
-      <Search setAllFonts={setAllFonts}/>
-    </nav>
-    <div id="main">
+  function handleDrag(e, font) {
+    console.log(font);
+    e.dataTransfer.setData("font", font);
+  }
 
-      <div id="fontView">
+  const RenderFonts = () => {
+    return (
+      <div style={{ paddingTop: startIndex * 250 }} id="fontsContainer">
         {allFonts.length > 0
-          ? allFonts.map((font) => (
-              <div className="font" onClick={changeHeaderFont}>
-                <p style={{ "font-family": font }}>{font}</p>
-                <p style={{ "font-family": font }}>Almost before we....</p>
+          ? allFonts.slice(startIndex, endIndex).map((font) => (
+              <div
+                onClick={changeHeaderFont}
+                onDragStart={(e) => handleDrag(e, font)}
+                draggable
+                key={font}
+                className="font"
+              >
+                <p style={{ fontFamily: font, fontSize: "1.5rem" }}>{font}</p>
+                <p style={{ fontFamily: font }}>Almost before we....</p>
               </div>
             ))
           : "Loading fonts"}
-        <button onClick={conThis}>Console</button>
       </div>
-      <div id="templateView">
-        <h1 style={{ "fontFamily": headerFont }}>Header</h1>
-        <p style={{ "fontFamily": headerFont }}>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque
-          voluptates quos similique minima, fugiat dicta corporis omnis
-          inventore. Enim consequatur officia eaque! Maxime accusantium modi ad
-          rerum recusandae ducimus veritatis!
-        </p>
+    );
+  };
+
+  return (
+    <div>
+      <nav>
+        <Search setAllFonts={setAllFonts} />
+      </nav>
+      <div id="main">
+        <div id="fontView" style={{ height: (allFonts.length / 3) * 250 }}>
+          <RenderFonts />
+        </div>
+        <TemplateView headerFont={headerFont} />
       </div>
-    </div>
     </div>
   );
 }
