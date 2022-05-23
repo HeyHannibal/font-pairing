@@ -1,8 +1,5 @@
-
-
-#main {
+#app{
   display: flex;
-  gap: 2rem;
 }
 
 #fontsContainer {
@@ -32,9 +29,3 @@ width: 50vw;
   box-sizing: border-box;
 }
 
-#templateView {
-  width: 30vw;
-  position: fixed;
-  font-size: 2rem;
-  margin-left: 60%;
-}

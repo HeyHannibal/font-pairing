@@ -6,13 +6,11 @@ import TemplateView from "./tepmplateView";
 
 export default function Font() {
   const [allFonts, setAllFonts] = useState(allGoogleFonts);
-  const [headerFont, setHeaderFont] = useState("Courier New");
+  const [displayAll, setDisplayAll] = useState(true);
 
-  let doOnce = true;
   useEffect(() => {
-    console.log("usedEffect");
-    if (allFonts.length > 0 && doOnce) {
-      doOnce = false;
+    if (allFonts.length > 0 && displayAll) {
+      setDisplayAll(false);
       WebFont.load({
         google: {
           families: allFonts.slice(0, 300),
@@ -21,22 +19,16 @@ export default function Font() {
     }
   });
 
-  function changeHeaderFont(e) {
-    setHeaderFont(e.target.textContent);
-  }
-
   function handleDrag(e, font) {
-    console.log(font);
     e.dataTransfer.setData("font", font);
   }
 
   const RenderFonts = () => {
     return (
-      <div style={{ paddingTop: startIndex * 250 }} id="fontsContainer">
+      <div id="fontsContainer">
         {allFonts.length > 0
-          ? allFonts.slice(startIndex, endIndex).map((font) => (
+          ? allFonts.slice(0, 200).map((font) => (
               <div
-                onClick={changeHeaderFont}
                 onDragStart={(e) => handleDrag(e, font)}
                 draggable
                 key={font}
@@ -50,17 +42,18 @@ export default function Font() {
       </div>
     );
   };
+  const log = () => console.log(allFonts);
 
   return (
-    <div>
+    <div id="main">
       <nav>
-        <Search setAllFonts={setAllFonts} />
+        <button onClick={log}>Log</button>
+        <Search setAllFonts={setAllFonts} displayAll={setDisplayAll} />
       </nav>
-      <div id="main">
-        <div id="fontView" style={{ height: (allFonts.length / 3) * 250 }}>
+      <div id="fontsContainer">
+        <div id="fontView">
           <RenderFonts />
         </div>
-        <TemplateView headerFont={headerFont} />
       </div>
     </div>
   );
