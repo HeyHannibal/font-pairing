@@ -29,6 +29,10 @@ export default function Font(props) {
     setSampleText(e.target.value);
   }
 
+  function updateFontsInUse(e) {
+    props.setFontsInUse(e.target.dataset.font);
+  }
+  
   const RenderFonts = () => {
     return (
       <div id="fontsContainer">
@@ -40,12 +44,15 @@ export default function Font(props) {
                 key={font}
                 className="font"
               >
-                <p style={{ fontFamily: font, fontSize: "1.5rem" }}>{font}</p>
+                <p style={{ fontFamily: font }}>{font}</p>
                 <p style={{ fontFamily: font }}>
                   {!sampleText
                     ? "Almost before we knew it, we had left the ground."
                     : sampleText}
                 </p>
+                <button className="btn font" data-font={font} onClick={updateFontsInUse}>
+                  <span class="material-symbols-outlined" data-font={font}>add_box</span>
+                </button>
               </div>
             ))
           : "Loading fonts"}

@@ -7,16 +7,25 @@ export default function FontPool(props) {
   }
 
   function dropFont(e) {
-    const updatePool = [...props.fontsInUse, e.dataTransfer.getData("font")];
-    props.setFontsInUse(updatePool);
-  }
+    
+    props.setFontsInUse(e.dataTransfer.getData("font"));
+}
+
+    function deleteFont(e) {
+        props.deleteFont(e.target.dataset.font)
+    }
 
   return (
     <div onDragOver={preventDefault} onDrop={dropFont} id="fontPoolContainer">
       <ul id="fontPoolList">
         {props.fontsInUse.map((font) => (
-          <li style={{ fontFamily: font }}>{font}</li>
+          <li style={{ fontFamily: font }}>{font}  
+          <span onClick={deleteFont}  data-font={font} className="material-symbols-outlined">
+remove
+</span>
+          </li>
         ))}
+        
       </ul>
     </div>
   );
