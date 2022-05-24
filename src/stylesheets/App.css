@@ -1,11 +1,14 @@
 #app{
   display: flex;
+  justify-content: flex-start;
+  padding: 2rem;
+  font-family: 'Source Sans Pro';
 }
 
 #fontsContainer {
 --grid-layout-gap: 1rem;
 --grid-column-count: 3;
---grid-item--min-width: 15rem;
+--grid-item--min-width: 12rem;
 
 --gap-count: calc(var(--grid-column-count) - 1);
 --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
@@ -19,13 +22,23 @@ grid-template-columns: repeat(
   minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr)
 );
 grid-gap: var(--grid-layout-gap);
-width: 50vw;
+width: 70vw;
 }
 .font {
-  
-  height: 250px;
+  padding: 1rem;
+  max-height: 250px;
   border: 1px solid rgb(219, 219, 219);
   border-radius: 10px;
   box-sizing: border-box;
+  z-index: 1;
+
 }
 
+nav{
+  display: flex;
+  z-index: 4;
+}
+.navWrap{
+  margin: 5rem 0;
+  overflow: visible;
+}

@@ -13,17 +13,15 @@ export default function Search(props) {
     if (isTyping) {
       const timeout = setTimeout(() => {
         setIsTyping(false);
-          console.log('doinit')
-          if(searchInput.length === 0) {
-            props.displayAll(true)
-            props.setAllFonts(allGoogleFonts)
-          }
-          else {
+        if (searchInput.length === 0) {
+          props.displayAll(true);
+          props.setAllFonts(allGoogleFonts);
+        } else {
           let searched = search();
           props.setAllFonts(
             searched.length > 200 ? searched.slice(0, 200) : searched
-          )}
-        
+          );
+        }
       }, 800);
       return () => clearTimeout(timeout);
     }
@@ -37,12 +35,14 @@ export default function Search(props) {
     );
   }
 
-
   return (
     <nav>
-      <h1>{searchInput}</h1>
-      {isTyping ? <p>is Typing</p> : <p>is Not Typing</p>}
-      <input type="search" value={searchInput} onChange={handleChange}></input>
+      <input
+        type="search"
+        placeholder="Search Fonts"
+        value={searchInput}
+        onChange={handleChange}
+      ></input>
     </nav>
   );
 }

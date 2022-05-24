@@ -11,7 +11,7 @@ export default function TemplateView(props) {
     BUTTON:'Courier New'
   });
 
-  function log(e) {
+  function preventDefault(e) {
     e.preventDefault();
   }
 
@@ -28,28 +28,28 @@ export default function TemplateView(props) {
         <h1
           style={{ fontFamily: docFonts.H1 }}
           onDrop={dropFont}
-          onDragOver={log}
+          onDragOver={preventDefault}
           className='templateText'
         >
-          Title
+          {docFonts.H1}
         </h1>
-        <p style={{ fontFamily: docFonts.P }} onDrop={dropFont} onDragOver={log} className='templateText'>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-        </p>
-        <p style={{ fontFamily: docFonts.P }} onDrop={dropFont} onDragOver={log} className='templateText'>
+        <h2 style={{ fontFamily: docFonts.P }} onDrop={dropFont} onDragOver={preventDefault} className='templateText'>
+        Now using {docFonts.H1} + {docFonts.P} 
+        </h2>
+        <p style={{ fontFamily: docFonts.P }} onDrop={dropFont} onDragOver={preventDefault} className='templateText'>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque
           voluptates quos similique minima, fugiat dicta corporis omnis inventore.
           Enim consequatur officia eaque! Maxime accusantium modi ad rerum
           recusandae ducimus veritatis!
         </p>
         <div id='links'  onDrop={dropFont}
-                          onDragOver={log}>
+                          onDragOver={preventDefault}>
           <a style={{ fontFamily: docFonts.A }}>Link 1</a>
           <a style={{ fontFamily: docFonts.A }}>Link 2</a>
         </div>
         <button style={{ fontFamily: docFonts.BUTTON }}
         onDrop={dropFont}
-        onDragOver={log}>Click Here</button>
+        onDragOver={preventDefault}>Click Here</button>
       </div>
     </div>
   );
