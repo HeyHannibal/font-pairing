@@ -1,9 +1,14 @@
-#app {
-  display: flex;
-  justify-content: space-evenly;
-  font-family: "Source Sans Pro";
+body{
+  margin: 0;
 }
-
+#app {
+  /* display: flex; */
+  font-family: "Source Sans Pro";
+  width: 100vw;
+}
+p{
+  white-space: pre-line;
+}
 #fontsContainer {
   --grid-layout-gap: 1rem;
   --grid-column-count: 3;
@@ -21,7 +26,7 @@
     minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr)
   );
   grid-gap: var(--grid-layout-gap);
-  width: 70vw;
+  width: 100%;
 }
 .font {
   position: relative;
@@ -32,13 +37,13 @@
   border-radius: 10px;
   box-sizing: border-box;
   z-index: 1;
-  transition: bottom .15s ease;
+  transition: bottom 0.15s ease;
   bottom: 0;
 }
-.font:hover{
-  bottom: 8px;
-      box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.021),
-    0 8px 10px 1px rgba(0, 0, 0, 0.24), 0 1px 8px 1px rgba(0, 0, 0, 0.068);
+.font:hover {
+  bottom: 2px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.021),
+    0 2px 5px 1px rgba(0, 0, 0, 0.24), 0 4px 8px 1px rgba(0, 0, 0, 0.068);
 }
 
 .font p:last-of-type {
@@ -69,7 +74,10 @@ button.btn.font {
   justify-content: center;
   align-items: center;
 }
-button.btn.font:hover{
+button.btn.font:hover {
   background-color: rgb(120, 164, 199);
   border: none;
+}
+.material-symbols-outlined {
+  color: rgb(70, 70, 70);
 }

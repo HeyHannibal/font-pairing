@@ -32,7 +32,7 @@ export default function Font(props) {
   function updateFontsInUse(e) {
     props.setFontsInUse(e.target.dataset.font);
   }
-  
+
   const RenderFonts = () => {
     return (
       <div id="fontsContainer">
@@ -50,8 +50,14 @@ export default function Font(props) {
                     ? "Almost before we knew it, we had left the ground."
                     : sampleText}
                 </p>
-                <button className="btn font" data-font={font} onClick={updateFontsInUse}>
-                  <span class="material-symbols-outlined" data-font={font}>add_box</span>
+                <button
+                  className="btn font"
+                  data-font={font}
+                  onClick={updateFontsInUse}
+                >
+                  <span className="material-symbols-outlined" data-font={font}>
+                    add_box
+                  </span>
                 </button>
               </div>
             ))
@@ -59,7 +65,6 @@ export default function Font(props) {
       </div>
     );
   };
-  const log = () => console.log(allFonts);
 
   return (
     <div id="main">

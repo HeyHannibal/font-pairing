@@ -1,0 +1,11 @@
+#splitPane{
+    display: flex;
+
+    box-sizing: border-box;
+}
+.resizer{
+    width: 0.5rem;
+    height: 100vh;
+    background-color: rgb(212, 212, 212);
+}
+
