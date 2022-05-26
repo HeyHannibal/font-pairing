@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import WebFont from "webfontloader";
 import { allGoogleFonts } from "../allGoogleFonts";
 import Search from "./search";
 import Select from "./select";
-import TemplateView from "./tepmplateView";
 
 export default function Font(props) {
   const [allFonts, setAllFonts] = useState(allGoogleFonts);
   const [displayAll, setDisplayAll] = useState(true);
   const [sampleText, setSampleText] = useState("");
+
+  const [startIndex, setStartIndex] = useState(0);
+  const [endIndex, setEndIndex] = useState(50);
+  const [paddingTop, setPaddingTop] = useState(0);
+
+  const scrollRef = useRef(null);
 
   useEffect(() => {
     if (allFonts.length > 0 && displayAll) {
@@ -37,15 +42,15 @@ export default function Font(props) {
     return (
       <div id="fontsContainer">
         {allFonts.length > 0
-          ? allFonts.slice(0, 150).map((font) => (
+          ? allFonts.slice(startIndex, endIndex).map((font) => (
               <div
                 onDragStart={(e) => handleDrag(e, font)}
                 draggable
                 key={font}
                 className="font"
               >
-                <p style={{ fontFamily: font }}>{font}</p>
-                <p style={{ fontFamily: font }}>
+                <p>{font}</p>
+                <p>
                   {!sampleText
                     ? "Almost before we knew it, we had left the ground."
                     : sampleText}
@@ -66,8 +71,18 @@ export default function Font(props) {
     );
   };
 
+  function infiniteScroll() {
+    const scrollTop = scrollRef.current.scrollTop;
+    const topVisibleRow = Math.floor(scrollTop / 250);
+    if (topVisibleRow + 10 > endIndex || topVisibleRow - 10 < startIndex) {
+      setPaddingTop(startIndex * 250 + 16);
+      setStartIndex(topVisibleRow - 14 > 0 ? topVisibleRow - 14 : 0);
+      setEndIndex(topVisibleRow + 14);
+    }
+  }
+
   return (
-    <div id="main">
+    <div id="main" ref={scrollRef} onScroll={infiniteScroll}>
       <div className="navWrap">
         <nav>
           <Search setAllFonts={setAllFonts} displayAll={setDisplayAll} />
@@ -79,8 +94,12 @@ export default function Font(props) {
           ></input>
         </nav>
       </div>
-      <div id="fontsContainer">
-        <div id="fontView">
+      <div
+        id="fontsContainer"
+        style={{ height: 250 * 1400 }}
+        onScroll={infiniteScroll}
+      >
+        <div id="fontView" style={{ marginTop: paddingTop }}>
           <RenderFonts />
         </div>
       </div>
