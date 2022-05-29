@@ -49,8 +49,8 @@ export default function Font(props) {
                 key={font}
                 className="font"
               >
-                <p>{font}</p>
-                <p>
+                <p style={{ fontFamily: font }}>{font}</p>
+                <p style={{ fontFamily: font }}>
                   {!sampleText
                     ? "Almost before we knew it, we had left the ground."
                     : sampleText}
@@ -74,10 +74,12 @@ export default function Font(props) {
   function infiniteScroll() {
     const scrollTop = scrollRef.current.scrollTop;
     const topVisibleRow = Math.floor(scrollTop / 250);
-    if (topVisibleRow + 10 > endIndex || topVisibleRow - 10 < startIndex) {
-      setPaddingTop(startIndex * 250 + 16);
+    if (topVisibleRow + 12 > endIndex || topVisibleRow - 12 < startIndex) {
       setStartIndex(topVisibleRow - 14 > 0 ? topVisibleRow - 14 : 0);
       setEndIndex(topVisibleRow + 14);
+      console.log({ topVisibleRow, startIndex, endIndex });
+
+      setPaddingTop(startIndex * 250 + 16);
     }
   }
 

@@ -1,6 +1,6 @@
 import "./stylesheets/App.css";
 import Font from "./components/Font";
-import TemplateView from "./components/tepmplateView";
+import TemplateView from "./components/template/display";
 import FontPool from "./components/fontPool";
 import { useState } from "react";
 import SplitPane from "./split-pane/splitPane";

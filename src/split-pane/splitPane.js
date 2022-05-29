@@ -10,7 +10,6 @@ export default function SplitPane({ children }) {
     setRightPane(100 - value);
   }
 
-
   function hideDragGhost(e) {
     setTriggerAnimation(false);
 
@@ -36,9 +35,9 @@ export default function SplitPane({ children }) {
     if (Math.floor(leftPane) === Math.floor(currentMousePosition)) return;
     setTriggerAnimation(true);
     if (leftPane > currentMousePosition) {
-      setPaneSize(leftPane - 10);
+      setPaneSize(leftPane - 5);
     } else {
-      setPaneSize(leftPane + 10);
+      setPaneSize(leftPane + 5);
     }
   }
   function resize() {
@@ -53,7 +52,7 @@ export default function SplitPane({ children }) {
         style={{
           width: leftPane + "%",
           transition: triggerAnimation
-            ? "width 0.5s cubic-bezier(0, 0, 0.21, 0.96) 0s"
+            ? "width 0.5s cubic-bezier(0.05, 0.08, 0, 0.65) 0s"
             : "none",
         }}
       >

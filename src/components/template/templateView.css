@@ -1,0 +1,87 @@
+#templateView {
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: #e5e5e5;
+  display: flex;
+  align-items: center;
+}
+.page {
+  box-sizing: border-box;
+  border-radius: 30px;
+  color: rgb(40, 40, 40);
+  margin: 1rem 2rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #ffffff;
+  top: 2rem;
+  height: 90vh;
+  max-width: 45vw;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.021),
+    0 2px 5px 2px rgba(0, 0, 0, 0.3), 0 4px 8px 1px rgba(0, 0, 0, 0.068);
+}
+
+
+h1.templateText {
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 1rem 0;
+}
+
+#author{
+  display: flex;
+  height: 10%;
+  align-items: center;
+}
+#avatar{
+  background-color: royalblue;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 40px;
+}
+#author p,h3,h4{
+margin: 0.25rem 0.5rem;
+letter-spacing: 2px;
+font-size: 1rem;
+}
+#author button{
+  margin-left: auto;
+  border: none;
+  height: 50%;
+  min-width: 30%;
+  background-color: rgb(48, 78, 170);
+  color: white;
+  font-size: 1.2rem;
+  border-radius: 10px;
+}
+
+
+h2.templateText {
+  margin: 0.5rem 0 0.2rem 0;
+  font-weight: 500;
+}
+p.templateText {
+  font-size: 1rem;
+  font-weight: 500;
+}
+p.templateText:first-of-type {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+#links {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+}
+#links a {
+  font-size: 1.5rem;
+}
