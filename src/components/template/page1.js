@@ -1,5 +1,8 @@
+
 export default function Page1(props) {
-    const {docFonts, dropFont, preventDefault } = props
+
+
+  const { docFonts, dropFont, preventDefault } = props;
   return (
     <div className="page" id="1">
       <div style={{ height: "30%" }}></div>
@@ -12,7 +15,7 @@ export default function Page1(props) {
         <button>Subscribe</button>
       </div>
       <h1
-        style={{ fontFamily: docFonts.H1 }}
+        style={{fontFamily: docFonts["H1"]}}
         onDrop={dropFont}
         onDragOver={preventDefault}
         className="templateText"
@@ -21,7 +24,7 @@ export default function Page1(props) {
       </h1>
 
       <h2
-        style={{ fontFamily: docFonts.H1 }}
+        style={{fontFamily: docFonts["H1"]}}
         onDrop={dropFont}
         onDragOver={preventDefault}
         className="templateText"
@@ -29,7 +32,7 @@ export default function Page1(props) {
         Now using {docFonts.H1} + {docFonts.P}
       </h2>
       <p
-        style={{ fontFamily: docFonts.P }}
+        style={{ fontFamily: docFonts["P"]}}
         onDrop={dropFont}
         onDragOver={preventDefault}
         className="templateText"

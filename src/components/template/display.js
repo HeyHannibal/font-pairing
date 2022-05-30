@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./templateView.css";
 import Page1 from "./page1";
 import Page2 from "./page2";
-export default function TemplateView(props) {
+export default function TemplateView() {
   const [docFonts, setDocFonts] = useState({
     H1: "Lato",
     P: "Courier New",
@@ -36,7 +36,8 @@ export default function TemplateView(props) {
   return (
     <div id="templateView">
       {/* <Page1 {...passProps} /> */}
-      <Page2/>
+      <Page2 {...passProps}/>
     </div>
   );
+  
 }
