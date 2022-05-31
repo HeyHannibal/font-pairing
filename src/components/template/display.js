@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./templateView.css";
+import "./style/templateView.css";
 import Page1 from "./page1";
 import Page2 from "./page2";
 export default function TemplateView() {
@@ -15,6 +15,7 @@ export default function TemplateView() {
   }
 
   function dropFont(e) {
+    console.log(e.target);
     setDocFonts((prev) => ({
       ...prev,
       [e.target.nodeName]: e.dataTransfer.getData("font"),
@@ -35,9 +36,8 @@ export default function TemplateView() {
   };
   return (
     <div id="templateView">
-      {/* <Page1 {...passProps} /> */}
-      <Page2 {...passProps}/>
+      <Page1 {...passProps} />
+      {/* <Page2 {...passProps}/> */}
     </div>
   );
-  
 }

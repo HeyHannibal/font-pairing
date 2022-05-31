@@ -6,12 +6,11 @@ body {
   font-family: "Source Sans Pro";
   width: 100vw;
   overflow: hidden;
-  
 }
 p {
   white-space: pre-line;
 }
-#main{
+#main {
   overflow-y: scroll;
   overflow-x: hidden;
   max-height: 100vh;
@@ -30,7 +29,6 @@ p {
     )
   );
   grid-auto-rows: 250px; */
-
 }
 
 .font {
@@ -83,4 +81,10 @@ button.btn.font:hover {
 }
 .material-symbols-outlined {
   color: rgb(70, 70, 70);
+}
+
+#pickAndDisplay {
+  display: flex;
+  align-items: center;
+  background-color: rgb(206, 206, 206);
 }

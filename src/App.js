@@ -27,9 +27,14 @@ function App() {
     <div id="app" >
       <SplitPane>
         <Font {...props} />
-        <FontPool {...props} fontsInUse={fontsInUse} deleteFont={deleteFont} />
-        <TemplateView />
+
+        <div id='pickAndDisplay'>
+          <FontPool {...props} fontsInUse={fontsInUse} deleteFont={deleteFont} />
+
+          <TemplateView />
+        </div>
       </SplitPane>
+
     </div>
   );
 }

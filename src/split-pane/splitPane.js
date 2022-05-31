@@ -80,7 +80,7 @@ export default function SplitPane({ children }) {
             : "none",
         }}
       >
-        {children[2]}
+        {children[1]}
       </div>
     </div>
   );
