@@ -1,6 +1,6 @@
 #fontPoolContainer{
     min-width: 15rem;
-    height: 90vh;
+    height: 70vh;
     margin: 1rem;
     background-color: rgb(255, 255, 255);
     top:10vh;
@@ -13,4 +13,13 @@ li{
     text-decoration: none;
     list-style: none;
     padding: 5px;
+}
+
+#primaryFonts{
+    display: flex;
+    flex-direction: column;
+    margin:1rem
+}
+#primaryFonts label{
+    color: gray
 }

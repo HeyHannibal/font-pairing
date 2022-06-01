@@ -1,10 +1,8 @@
 import "./stylesheets/App.css";
 import Font from "./components/Font";
-import TemplateView from "./components/template/display";
-import FontPool from "./components/fontPool";
+import TemplateView from "./components/template/display_controller";
 import { useState } from "react";
 import SplitPane from "./split-pane/splitPane";
-
 
 function App() {
   const [fontsInUse, setFontsInUse] = useState([]);
@@ -14,6 +12,7 @@ function App() {
       setFontsInUse((prev) => [...prev, font]);
     }
   }
+
   function deleteFont(delFont) {
     const filtered = [...fontsInUse.filter((font) => font !== delFont)];
     setFontsInUse(filtered);
@@ -23,18 +22,33 @@ function App() {
     setFontsInUse: addFont,
   };
 
-  return (
-    <div id="app" >
-      <SplitPane>
-        <Font {...props} />
+  const [docFonts, setDocFonts] = useState({
+    H1: "Lato",
+    P: "Courier New",
+    A: "Courier New",
+    BUTTON: "Courier New",
+  });
 
-        <div id='pickAndDisplay'>
-          <FontPool {...props} fontsInUse={fontsInUse} deleteFont={deleteFont} />
+  function preventDefault(e) {
+    e.preventDefault();
+  }
+
+  function dropFont(e) {
+    console.log(e.target);
+    setDocFonts((prev) => ({
+      ...prev,
+      [e.target.nodeName]: e.dataTransfer.getData("font"),
+    }));
+  }
+
+  return (
+    <div id="app">
+      <SplitPane>
+        <Font />
+
 
           <TemplateView />
-        </div>
       </SplitPane>
-
     </div>
   );
 }
