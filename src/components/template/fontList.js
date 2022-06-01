@@ -3,19 +3,15 @@ import "./style/fontPool.css";
 export default function FontPool(props) {
   const { docFonts, dropFont, preventDefault } = props;
 
-
   function deleteFont(e) {
     props.deleteFont(e.target.dataset.font);
   }
 
-  return (
-   <div id="fontPoolContainer">
-     
-   </div>
-  );
+  return <div id="fontPoolContainer"></div>;
 }
 
-{/* <div id="fontPoolContainer">
+{
+  /* <div id="fontPoolContainer">
 <div onDragOver={preventDefault} onDrop={dropFont}>
   <ul id="fontPoolList">
     {props.fontsInUse.map((font) => (
@@ -32,4 +28,5 @@ export default function FontPool(props) {
     ))}
   </ul>
 </div>
-</div> */}
+</div> */
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { allGoogleFonts } from "../allGoogleFonts";
+import { defaultRequest } from "../allGoogleFonts";
 export default function Search(props) {
   const [searchInput, setSearchInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
@@ -15,7 +15,7 @@ export default function Search(props) {
         setIsTyping(false);
         if (searchInput.length === 0) {
           props.displayAll(true);
-          props.setAllFonts(allGoogleFonts);
+          props.setAllFonts(defaultRequest);
         } else {
           let searched = search();
           props.setAllFonts(
@@ -28,7 +28,7 @@ export default function Search(props) {
   }, [searchInput]);
 
   function search() {
-    return allGoogleFonts.filter(
+    return defaultRequest.filter(
       (font) =>
         font.slice(0, searchInput.length).toLowerCase() ===
         searchInput.toLowerCase()

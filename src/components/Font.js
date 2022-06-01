@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import WebFont from "webfontloader";
-import { allGoogleFonts } from "../allGoogleFonts";
+import { defaultRequest, webFontRequestWithWeight } from "../allGoogleFonts";
 import Search from "./search";
 import Select from "./select";
 
 export default function Font(props) {
-  const [allFonts, setAllFonts] = useState(allGoogleFonts);
+  const [allFonts, setAllFonts] = useState(webFontRequestWithWeight);
+  const [fontNames, setFontNames] = useState(defaultRequest);
   const [displayAll, setDisplayAll] = useState(true);
   const [sampleText, setSampleText] = useState("");
 
@@ -20,7 +21,7 @@ export default function Font(props) {
       setDisplayAll(false);
       WebFont.load({
         google: {
-          families: allFonts.slice(0, 300),
+          families: allFonts.slice(0, 100),
         },
       });
     }
@@ -41,8 +42,8 @@ export default function Font(props) {
   const RenderFonts = () => {
     return (
       <div id="fontsContainer">
-        {allFonts.length > 0
-          ? allFonts.slice(startIndex, endIndex).map((font) => (
+        {fontNames.length > 0
+          ? fontNames.slice(startIndex, endIndex).map((font) => (
               <div
                 onDragStart={(e) => handleDrag(e, font)}
                 draggable

@@ -16,9 +16,11 @@ export default function TemplateView() {
     BUTTON: "Courier New",
   });
 
-  const [primaryFonts, setPrimaryFonts] = useState({
-    header: "Quicksand",
-    paragraph: "Lora",
+  const [showHoverMenu, setHoverMenu] = useState(false);
+  const [hoverMenuPosition, setHoverMenuPosition] = useState({
+    top: 0,
+    left: 0,
+    elemHeight: 0,
   });
 
   function preventDefault(e) {
@@ -50,14 +52,65 @@ export default function TemplateView() {
     }));
   }
 
+  const hoverOn = (e) => {
+    if (showHoverMenu || e.target.nodeName === "DIV") return;
+    else {
+      const position = e.target.getBoundingClientRect();
+      setHoverMenuPosition({
+        top: Math.floor(position.y - 50),
+        left: Math.floor(position.x + position.width / 2),
+      });
+      setHoverMenu(true);
+    }
+  };
+
+  const hoverOff = (e) => {
+    setHoverMenu(false);
+  };
+
+  function controlWeight(e) {
+    let currentWeight = Number(e.target.style.fontWeight);
+    if (!currentWeight) {
+      currentWeight = 400;
+    }
+
+    e.nativeEvent.wheelDelta > 0
+      ? (e.target.style.fontWeight = currentWeight + 100)
+      : (e.target.style.fontWeight = currentWeight - 100);
+  }
+
   const passProps = {
     docFonts,
     dropFont,
     preventDefault,
   };
 
+  const FontWheelStyle = {
+    top: hoverMenuPosition.top,
+    left: hoverMenuPosition.left,
+    display: showHoverMenu ? "flex" : "none",
+    position: "fixed",
+    "pointer-events": "none",
+  };
+
+  const FontWheel = () => {
+    return (
+      <div id="fontWheelMenu" style={FontWheelStyle}>
+        <p>1</p>
+        <p>2</p>
+        <p>4</p>
+      </div>
+    );
+  };
+
   return (
-    <div id="templateView">
+    <div
+      id="templateView"
+      onWheel={controlWeight}
+      onMouseOver={hoverOn}
+      onMouseOut={hoverOff}
+    >
+      <FontWheel></FontWheel>
       <div id="pickedFonts">
         <div
           id="primaryFontEventCatcher"

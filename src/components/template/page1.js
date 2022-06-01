@@ -1,14 +1,19 @@
 export default function Page1(props) {
-  
   const { docFonts } = props;
-  
+
   return (
     <div className="page" id="1">
       <div style={{ height: "30%" }}></div>
       <div id="author">
         <div id="avatar"></div>
         <div>
-          <h3 style={{ fontFamily: docFonts["H3"] }}>Name Lastname</h3>
+          <h3 style={{ fontFamily: docFonts["H3"] }}>
+            Name Lastname
+            <div style={{ display: "flex", position: "absolute" }}>
+              <h1>1</h1>
+              <h2>2</h2>
+            </div>
+          </h3>
           <h4 style={{ fontFamily: docFonts["H4"] }}>Title</h4>
         </div>
         <button style={{ fontFamily: docFonts["BUTTON"] }}>Subscribe</button>

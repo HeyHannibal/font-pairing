@@ -6,6 +6,7 @@ body {
   font-family: "Source Sans Pro";
   width: 100vw;
   overflow: hidden;
+  font-weight: 400;
 }
 p {
   white-space: pre-line;
@@ -87,4 +88,7 @@ button.btn.font:hover {
   display: flex;
   align-items: center;
   background-color: rgb(206, 206, 206);
+}
+h1, h2{
+  font-weight: 500;
 }
