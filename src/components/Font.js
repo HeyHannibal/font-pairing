@@ -1,6 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import WebFont from "webfontloader";
-import { allGoogleFonts, fontList, webFontListWithWeight } from "../allGoogleFonts";
+import {
+  allGoogleFonts,
+  fontList,
+  webFontListWithWeight,
+} from "../allGoogleFonts";
 import Search from "./search";
 import Select from "./select";
 

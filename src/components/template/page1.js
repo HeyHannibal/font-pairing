@@ -7,13 +7,12 @@ export default function Page1(props) {
       <div id="author">
         <div id="avatar"></div>
         <div>
-          <h3 style={{ fontFamily: docFonts["H3"].name }}>
-            Name Lastname
-
-          </h3>
+          <h3 style={{ fontFamily: docFonts["H3"].name }}>Name Lastname</h3>
           <h4 style={{ fontFamily: docFonts["H4"].name }}>Title</h4>
         </div>
-        <button style={{ fontFamily: docFonts["BUTTON"].name }}>Subscribe</button>
+        <button style={{ fontFamily: docFonts["BUTTON"].name }}>
+          Subscribe
+        </button>
       </div>
       <h1 style={{ fontFamily: docFonts["H1"].name }} className="templateText">
         Header font is {docFonts.H1.name}

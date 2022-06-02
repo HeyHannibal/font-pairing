@@ -66,6 +66,7 @@ export default function TemplateView() {
   }
 
   const hoverOn = (e) => {
+    console.log(docFonts)
     if (showHoverMenu || e.target.nodeName === "DIV") return;
     else {
       const position = e.target.getBoundingClientRect();
@@ -73,6 +74,13 @@ export default function TemplateView() {
         top: Math.floor(position.y - 50),
         left: Math.floor(position.x + position.width / 2),
       });
+
+      Object.keys(docFonts).forEach((item) => {
+        if (docFonts[item].name === e.target.textContent) {
+        setHoverMenuContent(docFonts[item].fontWeight);
+        }
+      });
+
       setHoverMenu(true);
     }
   };
