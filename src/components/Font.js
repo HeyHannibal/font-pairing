@@ -1,12 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import WebFont from "webfontloader";
-import { defaultRequest, webFontRequestWithWeight } from "../allGoogleFonts";
+import { allGoogleFonts, fontList, webFontListWithWeight } from "../allGoogleFonts";
 import Search from "./search";
 import Select from "./select";
 
 export default function Font(props) {
-  const [allFonts, setAllFonts] = useState(webFontRequestWithWeight);
-  const [fontNames, setFontNames] = useState(defaultRequest);
+  const [allFonts, setAllFonts] = useState(webFontListWithWeight);
   const [displayAll, setDisplayAll] = useState(true);
   const [sampleText, setSampleText] = useState("");
 
@@ -21,7 +20,7 @@ export default function Font(props) {
       setDisplayAll(false);
       WebFont.load({
         google: {
-          families: allFonts.slice(0, 100),
+          families: webFontListWithWeight.slice(0, 100),
         },
       });
     }
@@ -42,26 +41,39 @@ export default function Font(props) {
   const RenderFonts = () => {
     return (
       <div id="fontsContainer">
-        {fontNames.length > 0
-          ? fontNames.slice(startIndex, endIndex).map((font) => (
+        {fontList.length > 0
+          ? fontList.slice(startIndex, endIndex).map((font, index) => (
               <div
-                onDragStart={(e) => handleDrag(e, font)}
+                onDragStart={(e) =>
+                  handleDrag(
+                    e,
+                    JSON.stringify({
+                      name: font.name,
+                      fontWeight: font.variants,
+                    })
+                  )
+                }
                 draggable
-                key={font}
+                key={font.name}
                 className="font"
               >
-                <p style={{ fontFamily: font }}>{font}</p>
-                <p style={{ fontFamily: font }}>
+                <p style={{ fontFamily: font.name, fontWeight: 400 }}>
+                  {font.name}
+                </p>
+                <p style={{ fontFamily: font.name, fontWeight: 400 }}>
                   {!sampleText
                     ? "Almost before we knew it, we had left the ground."
                     : sampleText}
                 </p>
                 <button
                   className="btn font"
-                  data-font={font}
+                  data-font={font.name}
                   onClick={updateFontsInUse}
                 >
-                  <span className="material-symbols-outlined" data-font={font}>
+                  <span
+                    className="material-symbols-outlined"
+                    data-font={font.name}
+                  >
                     add_box
                   </span>
                 </button>

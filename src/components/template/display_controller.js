@@ -4,19 +4,33 @@ import Page1 from "./page1";
 import Page2 from "./page2";
 import FontList from "./fontList";
 import PrimaryFonts from "./primaryFonts";
+
 export default function TemplateView() {
+  const defaultFont = {
+    name: "Roboto",
+    fontWeight: ["100", "300", "500", "700", "900"],
+  };
+
   const [docFonts, setDocFonts] = useState({
-    H1: "Lato",
-    H2: "Lato",
-    H3: "Lato",
-    H4: "Lato",
-    H5: "Lato",
-    P: "Courier New",
-    A: "Courier New",
-    BUTTON: "Courier New",
+    H1: defaultFont,
+    H2: defaultFont,
+    H3: defaultFont,
+    H4: defaultFont,
+    H5: defaultFont,
+    P: defaultFont,
+    A: defaultFont,
+    BUTTON: defaultFont,
   });
 
   const [showHoverMenu, setHoverMenu] = useState(false);
+  const [hoverMenuContent, setHoverMenuContent] = useState([
+    "100",
+    "300",
+    "500",
+    "700",
+    "900",
+  ]);
+  const [selectedValue, setSelectedValue] = useState(1);
   const [hoverMenuPosition, setHoverMenuPosition] = useState({
     top: 0,
     left: 0,
@@ -32,23 +46,22 @@ export default function TemplateView() {
       const updated = { ...docFonts };
       Object.keys(updated).forEach((item) => {
         if (item !== "P") {
-          updated[item] = e.dataTransfer.getData("font");
+          updated[item] = JSON.parse(e.dataTransfer.getData("font"));
         }
       });
       setDocFonts(updated);
     } else {
       setDocFonts((prev) => ({
         ...prev,
-        ["P"]: e.dataTransfer.getData("font"),
+        ["P"]: JSON.parse(e.dataTransfer.getData("font")),
       }));
     }
   }
 
   function dropFont(e) {
-    console.log(e.target);
     setDocFonts((prev) => ({
       ...prev,
-      [e.target.nodeName]: e.dataTransfer.getData("font"),
+      [e.target.nodeName]: JSON.parse(e.dataTransfer.getData("font")),
     }));
   }
 
@@ -69,14 +82,13 @@ export default function TemplateView() {
   };
 
   function controlWeight(e) {
-    let currentWeight = Number(e.target.style.fontWeight);
-    if (!currentWeight) {
-      currentWeight = 400;
+    if (e.nativeEvent.wheelDelta > 0) {
+      if (selectedValue + 1 < hoverMenuContent.length)
+        setSelectedValue((prev) => prev + 1);
+    } else {
+      if (selectedValue - 1 >= 0) setSelectedValue((prev) => prev - 1);
     }
-
-    e.nativeEvent.wheelDelta > 0
-      ? (e.target.style.fontWeight = currentWeight + 100)
-      : (e.target.style.fontWeight = currentWeight - 100);
+    e.target.style.fontWeight = hoverMenuContent[selectedValue];
   }
 
   const passProps = {
@@ -96,9 +108,13 @@ export default function TemplateView() {
   const FontWheel = () => {
     return (
       <div id="fontWheelMenu" style={FontWheelStyle}>
-        <p>1</p>
-        <p>2</p>
-        <p>4</p>
+        {hoverMenuContent.map((fontWeight) =>
+          fontWeight === hoverMenuContent[selectedValue] ? (
+            <p style={{ backgroundColor: "lightblue" }}>{fontWeight}</p>
+          ) : (
+            <p>{fontWeight}</p>
+          )
+        )}
       </div>
     );
   };
@@ -109,6 +125,7 @@ export default function TemplateView() {
       onWheel={controlWeight}
       onMouseOver={hoverOn}
       onMouseOut={hoverOff}
+      onDrop={dropPrimaryFont}
     >
       <FontWheel></FontWheel>
       <div id="pickedFonts">

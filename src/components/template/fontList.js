@@ -3,9 +3,9 @@ import "./style/fontPool.css";
 export default function FontPool(props) {
   const { docFonts, dropFont, preventDefault } = props;
 
-  function deleteFont(e) {
-    props.deleteFont(e.target.dataset.font);
-  }
+  // function deleteFont(e) {
+  //   props.deleteFont(e.target.dataset.font);
+  // }
 
   return <div id="fontPoolContainer"></div>;
 }

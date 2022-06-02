@@ -1,5 +1,6 @@
+import { fontFamily } from "@mui/system";
 
- const allGoogleFonts = [
+export const allGoogleFonts = [
   {
     family: "Roboto",
     variants: [
@@ -9960,18 +9961,24 @@
 
 export const defaultRequest = allGoogleFonts.map(font => font.family)
 
-// const webFontRequest = allGoogleFonts.map((font) => {
+// const webFontList = allGoogleFonts.map((font) => {
 //   const filterVariants = font.variants.filter((variant) => Number(variant) !== "NaN"   
 //   ).join();
 //   return font.family + ":" + filterVariants;
 // });
-// console.log(webFontRequest);
+// console.log(webFontList);
 
-export const webFontRequestWithWeight = allGoogleFonts.map(font => {
+export const webFontListWithWeight = allGoogleFonts.map(font => {
     const numsOnly = font.variants.filter(item => !isNaN( Number(item)))
     return font.family + ':' + numsOnly.join() 
 })
-console.log(webFontRequestWithWeight)
+export const fontList = allGoogleFonts.map(fontObj => {
+   const numsOnly = fontObj.variants.filter(item => !isNaN( Number(item)))
+    return {
+      name: fontObj.family,
+      variants: numsOnly
+    }
+})
 
 
 //    const allFontsFiltered =  allFonts.map(font => {
