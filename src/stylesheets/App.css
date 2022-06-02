@@ -5,6 +5,7 @@ body {
   width: 100vw;
   overflow: hidden;
   font-weight: 400;
+  font-family: "Roboto";
 }
 p {
   white-space: pre-line;
@@ -22,7 +23,7 @@ p {
 }
 
 .font {
-  box-sizing: border-box;
+  padding: 0rem 1rem;
   position: relative;
   height: 250px;
   border: 1px solid rgb(219, 219, 219);
@@ -31,17 +32,27 @@ p {
   z-index: 1;
   transition: bottom 0.15s ease;
   bottom: 0;
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
 }
 .font:hover {
   bottom: 2px;
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.021),
     0 2px 5px 1px rgba(0, 0, 0, 0.24), 0 4px 8px 1px rgba(0, 0, 0, 0.068);
 }
-.font p:last-of-type {
+.font p:first-child {
+  font-size: 1.2rem;
+}
+.font p:nth-child(2) {
   font-size: 1.5rem;
 }
-
+.font p:last-of-type {
+  margin-top: auto;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: gray;
+}
 nav {
   display: flex;
   z-index: 4;

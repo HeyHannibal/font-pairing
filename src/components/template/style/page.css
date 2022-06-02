@@ -32,20 +32,17 @@
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.13),
     0 2px 5px 2px rgba(0, 0, 0, 0.192), 0 4px 8px 1px rgba(0, 0, 0, 0.301);
 
-     margin-top: 0;
-    transition: margin-top 1s ease;
-
+  margin-top: 0;
+  transition: margin-top 1s ease;
 }
 .page.over {
   animation: switch;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
- 
 }
 @keyframes switch {
   0% {
     z-index: 2;
-
   }
   50% {
     margin-left: 600px;

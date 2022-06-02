@@ -49,19 +49,13 @@ export default function Font(props) {
           ? fontList.slice(startIndex, endIndex).map((font, index) => (
               <div
                 onDragStart={(e) =>
-                  handleDrag(
-                    e,
-                    JSON.stringify({
-                      name: font.name,
-                      fontWeight: font.variants,
-                    })
-                  )
+                  handleDrag(e,JSON.stringify({  name: font.name,  fontWeight: font.variants,}))
                 }
                 draggable
                 key={font.name}
                 className="font"
               >
-                <p style={{ fontFamily: font.name, fontWeight: 400 }}>
+                <p>
                   {font.name}
                 </p>
                 <p style={{ fontFamily: font.name, fontWeight: 400 }}>
@@ -69,6 +63,7 @@ export default function Font(props) {
                     ? "Almost before we knew it, we had left the ground."
                     : sampleText}
                 </p>
+                <p className="fontWeights">{font.variants.join(', ')}</p>
                 <button
                   className="btn font"
                   data-font={font.name}
