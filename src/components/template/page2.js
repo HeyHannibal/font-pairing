@@ -1,6 +1,5 @@
 import { loremIpsum } from "lorem-ipsum";
 
-import "./style/page2.css";
 function Tile(props) {
   return (
     <div className="tile">
@@ -10,7 +9,7 @@ function Tile(props) {
           onDragOver={props.preventDefault}
           style={{ fontFamily: props.docFonts }}
         >
-          {loremIpsum({ count: 2, units: "words" })}
+          Content 
         </h1>
       </div>
     </div>
@@ -18,10 +17,10 @@ function Tile(props) {
 }
 
 export default function Page2(props) {
-  const { docFonts, dropFont, preventDefault } = props;
+  const { docFonts, cssClass } = props;
 
   return (
-    <div className="page" id="2">
+    <div className={"page " + cssClass} id="2">
       <h1>Hello User!</h1>
       <input type="text" placeholder="search something"></input>
       <p>Trending content</p>
@@ -29,9 +28,7 @@ export default function Page2(props) {
         {Array(10).fill(
           <Tile
             className={"tile"}
-            docFonts={docFonts.H1}
-            dropFont={dropFont}
-            preventDefault={preventDefault}
+            docFonts={docFonts.H1.name}
           ></Tile>
         )}
       </div>

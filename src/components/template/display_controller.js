@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import "./style/templateView.css";
-import Page1 from "./page1";
-import Page2 from "./page2";
+
 import FontList from "./fontList";
 import PrimaryFonts from "./primaryFonts";
-
+import TemplateController from "./template_controller";
 export default function TemplateView() {
   const defaultFont = {
     name: "Roboto",
@@ -66,7 +65,6 @@ export default function TemplateView() {
   }
 
   const hoverOn = (e) => {
-    console.log(docFonts)
     if (showHoverMenu || e.target.nodeName === "DIV") return;
     else {
       const position = e.target.getBoundingClientRect();
@@ -77,7 +75,7 @@ export default function TemplateView() {
 
       Object.keys(docFonts).forEach((item) => {
         if (docFonts[item].name === e.target.textContent) {
-        setHoverMenuContent(docFonts[item].fontWeight);
+          setHoverMenuContent(docFonts[item].fontWeight);
         }
       });
 
@@ -98,12 +96,6 @@ export default function TemplateView() {
     }
     e.target.style.fontWeight = hoverMenuContent[selectedValue];
   }
-
-  const passProps = {
-    docFonts,
-    dropFont,
-    preventDefault,
-  };
 
   const FontWheelStyle = {
     top: hoverMenuPosition.top,
@@ -145,12 +137,16 @@ export default function TemplateView() {
           <PrimaryFonts docFonts={docFonts} />
         </div>
         <div id="fontListContainer">
-          <FontList {...passProps} />
+          <FontList docFonts={docFonts} />
         </div>
       </div>
-      <div id="templateContainer" onDragOver={preventDefault} onDrop={dropFont}>
-        <Page1 {...passProps} />
-      </div>
+
+      <TemplateController
+        
+        docFonts={docFonts}
+        onDragOver={preventDefault}
+        onDrop={dropFont}
+      />
     </div>
   );
 }

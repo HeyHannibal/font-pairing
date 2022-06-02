@@ -45,7 +45,6 @@ function App() {
     <div id="app">
       <SplitPane>
         <Font />
-
         <TemplateView />
       </SplitPane>
     </div>

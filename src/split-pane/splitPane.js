@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "../stylesheets/splitPane.css";
 export default function SplitPane({ children }) {
-  const [leftPane, setLeftPane] = useState(49);
+  const [leftPane, setLeftPane] = useState(51);
   const [middlePane, setMiddlePane] = useState(33);
-  const [rightPane, setRightPane] = useState(51);
+  const [rightPane, setRightPane] = useState(49);
 
   function setPaneSize(value) {
     setLeftPane(value);

@@ -1,8 +1,8 @@
 export default function Page1(props) {
-  const { docFonts } = props;
+  const { docFonts, cssClass } = props;
 
   return (
-    <div className="page" id="1">
+    <div className={"page " + cssClass} id="1">
       <div style={{ height: "30%" }}></div>
       <div id="author">
         <div id="avatar"></div>
