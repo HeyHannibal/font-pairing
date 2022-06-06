@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../stylesheets/splitPane.css";
 export default function SplitPane({ children }) {
-  const [leftPane, setLeftPane] = useState(51);
+  const [leftPane, setLeftPane] = useState(50);
   const [middlePane, setMiddlePane] = useState(33);
   const [rightPane, setRightPane] = useState(49);
 
@@ -69,8 +69,11 @@ export default function SplitPane({ children }) {
         onDrag={resizePane}
         onDragStart={hideDragGhost}
         onDragEnd={addMonentum}
+        style={{ width: "1vw" }}
         draggable
-      ></div>
+      ><div className="resizerImg">
+        
+        </div></div>
       <div
         id="leftPane"
         style={{

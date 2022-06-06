@@ -1,4 +1,3 @@
-import { loremIpsum } from "lorem-ipsum";
 
 function Tile(props) {
   return (

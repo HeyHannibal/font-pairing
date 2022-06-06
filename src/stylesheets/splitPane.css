@@ -3,11 +3,14 @@
   box-sizing: border-box;
 }
 .resizer {
-  width: 0.5rem;
   height: 100vh;
-  background-color: rgb(212, 212, 212);
 }
+.resizerImg{
+  width: 0.8rem;
+  background-color: rgb(212, 212, 212);
+  height: 100vh;
 
+}
 #rightPane {
-  background-color: #e5e5e5;
+  background-color: #dadada;
 }

@@ -142,7 +142,6 @@ export default function TemplateView() {
       </div>
 
       <TemplateController
-        
         docFonts={docFonts}
         onDragOver={preventDefault}
         onDrop={dropFont}

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./style/fontPool.css";
 export default function FontPool(props) {
   const { docFonts, dropFont, preventDefault } = props;
 

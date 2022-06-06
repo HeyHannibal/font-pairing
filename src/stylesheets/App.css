@@ -1,9 +1,9 @@
 body {
   margin: 0;
+  overflow: hidden;
 }
 #app {
   width: 100vw;
-  overflow: hidden;
   font-weight: 400;
   font-family: "Roboto";
 }
