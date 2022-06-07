@@ -4,7 +4,7 @@ import "./style/templateView.css";
 import FontList from "./fontList";
 import PrimaryFonts from "./primaryFonts";
 import TemplateController from "./template_controller";
-export default function TemplateView() {
+export default function Display() {
   const defaultFont = {
     name: "Roboto",
     fontWeight: ["100", "300", "500", "700", "900"],

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { defaultRequest } from "../allGoogleFonts";
+import { defaultRequest } from "../googleFontList";
 export default function Search(props) {
   const [searchInput, setSearchInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);

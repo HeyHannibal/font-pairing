@@ -1,6 +1,6 @@
 import "./stylesheets/App.css";
-import Font from "./components/Font";
-import TemplateView from "./components/template/display_controller";
+import Search from "./components/search/search";
+import Display from "./components/display/display";
 import { useState } from "react";
 import SplitPane from "./split-pane/splitPane";
 
@@ -44,8 +44,8 @@ function App() {
   return (
     <div id="app">
       <SplitPane>
-        <Font />
-        <TemplateView />
+        <Search />
+        <Display />
       </SplitPane>
     </div>
   );

@@ -25,7 +25,8 @@ p {
 .font {
   padding: 0rem 1rem;
   position: relative;
-  height: 250px;
+  height: 230px;
+  margin: 20px 0;
   border: 1px solid rgb(219, 219, 219);
   border-radius: 10px;
   box-sizing: border-box;
@@ -66,8 +67,8 @@ button.btn.font {
   position: absolute;
   height: 2.5rem;
   width: 2.5rem;
-  top: calc(100% - 2rem);
-  left: calc(100% - 2rem);
+  top: calc(100% - 4.5rem);
+  left: calc(100% - 3.5rem);
   background-color: white;
   color: black;
   font-size: 0.5rem;
