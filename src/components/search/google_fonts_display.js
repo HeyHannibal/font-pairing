@@ -19,10 +19,9 @@ export default function Fonts(props) {
   }
 
   const { allFonts } = props;
-  console.log(allFonts);
   const RenderFonts = () => {
     return (
-      <div id="googleFonts" style={{ marginTop: props.marginTop }}>
+      <div id="googleFonts" style={{ marginTop: marginTop }}>
         {allFonts.length > 0
           ? allFonts.slice(startIndex, endIndex).map((font, index) => (
               <div
@@ -68,7 +67,13 @@ export default function Fonts(props) {
       setStartIndex(topVisibleRow - 14 > 0 ? topVisibleRow - 14 : 0);
       setEndIndex(topVisibleRow + 14);
       setMarginTop(startIndex * 270);
-      console.log({ topVisibleRow, startIndex, endIndex });
+      if(topVisibleRow > props.fetchIndex.end || topVisibleRow < props.fetchIndex.start) {
+        props.setFetchIndex({
+          start: topVisibleRow - 50,
+          end: topVisibleRow + 50
+        })
+        console.log('new request incoming')
+      }
     }
   }
 

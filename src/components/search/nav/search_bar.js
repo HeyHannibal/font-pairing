@@ -15,14 +15,12 @@ export default function Search(props) {
       const timeout = setTimeout(() => {
         setIsTyping(false);
         if (searchInput.length === 0) {
-          props.displayAll(true);
           props.setNewRequest(webFontLoaderRequestArray);
         } else {
           let searched = search();
           props.setNewRequest(
-            searched.length > 200 ? searched.slice(0, 200) : searched
+            searched.length > 100 ? searched.slice(0, 100) : searched
           );
-          
         }
       }, 800);
       return () => clearTimeout(timeout);

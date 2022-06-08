@@ -10,7 +10,7 @@ export default function Search() {
   const [webFontLoaderRequest, setWebFontLoaderRequest] = useState(
     webFontLoaderRequestArray
   );
-  const [fetchIndex, setFetchIndex] = useState({ start: 0, end: 200 });
+  const [fetchIndex, setFetchIndex] = useState({ start: 0, end: 100 });
 
   const requestToObjectArray = webFontLoaderRequest.map((string) => {
     return {
@@ -27,7 +27,7 @@ export default function Search() {
         families: webFontLoaderRequest.slice(fetchIndex.start, fetchIndex.end),
       },
     });
-  }, [webFontLoaderRequest]);
+  }, [webFontLoaderRequest, fetchIndex]);
 
   function setNewRequest(newList) {
     setWebFontLoaderRequest(newList);
@@ -42,8 +42,8 @@ export default function Search() {
       <Nav setNewRequest={setNewRequest} />
       <Fonts
         allFonts={requestToObjectArray}
-        displayAll={displayAll}
-        setDisplayAll={setDisplayAll}
+        fetchIndex={fetchIndex}
+        setFetchIndex={setFetchIndex}
       />
     </div>
   );
