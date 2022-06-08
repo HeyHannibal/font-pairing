@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { defaultRequest } from "../googleFontList";
+import { webFontLoaderRequestArray } from "../../../allGoogleFontsArray";
+
 export default function Search(props) {
   const [searchInput, setSearchInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
@@ -15,12 +16,13 @@ export default function Search(props) {
         setIsTyping(false);
         if (searchInput.length === 0) {
           props.displayAll(true);
-          props.setAllFonts(defaultRequest);
+          props.setNewRequest(webFontLoaderRequestArray);
         } else {
           let searched = search();
-          props.setAllFonts(
+          props.setNewRequest(
             searched.length > 200 ? searched.slice(0, 200) : searched
           );
+          
         }
       }, 800);
       return () => clearTimeout(timeout);
@@ -28,9 +30,9 @@ export default function Search(props) {
   }, [searchInput]);
 
   function search() {
-    return defaultRequest.filter(
+    return webFontLoaderRequestArray.filter(
       (font) =>
-        font.slice(0, searchInput.length).toLowerCase() ===
+        font.split(":")[0].slice(0, searchInput.length).toLowerCase() ===
         searchInput.toLowerCase()
     );
   }

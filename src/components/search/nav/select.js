@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../stylesheets/select.css";
+import "../select.css";
 
 export default function Select(props) {
   const [selected, setSelected] = useState("");

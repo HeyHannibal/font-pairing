@@ -9961,14 +9961,7 @@ export const allGoogleFonts = [
 
 export const defaultRequest = allGoogleFonts.map(font => font.family)
 
-// const webFontList = allGoogleFonts.map((font) => {
-//   const filterVariants = font.variants.filter((variant) => Number(variant) !== "NaN"   
-//   ).join();
-//   return font.family + ":" + filterVariants;
-// });
-// console.log(webFontList);
-
-export const webFontListWithWeight = allGoogleFonts.map(font => {
+export const webFontLoaderRequestArray = allGoogleFonts.map(font => {
     const numsOnly = font.variants.filter(item => !isNaN( Number(item)))
     return font.family + ':' + numsOnly.join() 
 })
