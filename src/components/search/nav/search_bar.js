@@ -36,13 +36,11 @@ export default function Search(props) {
   }
 
   return (
-    <nav>
       <input
         type="search"
         placeholder="Search Fonts"
         value={searchInput}
         onChange={handleChange}
       ></input>
-    </nav>
   );
 }

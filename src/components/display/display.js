@@ -45,14 +45,14 @@ export default function Display() {
       const updated = { ...docFonts };
       Object.keys(updated).forEach((item) => {
         if (item !== "P") {
-          updated[item] = JSON.parse(e.dataTransfer.getData("font"));
+          updated[item] = e.dataTransfer.getData("font");
         }
       });
       setDocFonts(updated);
     } else {
       setDocFonts((prev) => ({
         ...prev,
-        ["P"]: JSON.parse(e.dataTransfer.getData("font")),
+        ["P"]: e.dataTransfer.getData("font"),
       }));
     }
   }
@@ -60,7 +60,7 @@ export default function Display() {
   function dropFont(e) {
     setDocFonts((prev) => ({
       ...prev,
-      [e.target.nodeName]: JSON.parse(e.dataTransfer.getData("font")),
+      [e.target.nodeName]: e.dataTransfer.getData("font"),
     }));
   }
 

@@ -45,8 +45,9 @@ function App() {
     <div id="app">
       <SplitPane>
         <Search />
-        <Display />
-      </SplitPane>
+        {/* <Display />  */}
+        <div></div>
+       </SplitPane>
     </div>
   );
 }

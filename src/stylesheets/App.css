@@ -10,6 +10,12 @@ body {
 p {
   white-space: pre-line;
 }
+
+/* html.wf-loading .font p:nth-child(2) {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+} */
+
 #main {
   overflow-y: scroll;
   overflow-x: hidden;
@@ -21,22 +27,29 @@ p {
   display: flex;
   flex-direction: column;
 }
-
+.fontContainer {
+  height: 270px;
+}
 .font {
   padding: 0rem 1rem;
   position: relative;
   height: 230px;
-  margin: 20px 0;
-  border: 1px solid rgb(219, 219, 219);
+  /* margin: 20px 0; */
   border-radius: 10px;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
+  border: 1px solid rgb(219, 219, 219);
+
   z-index: 1;
   transition: bottom 0.15s ease;
   bottom: 0;
   display: flex;
   flex-direction: column;
-
+  transition: opacity 0.1s;
 }
+html.wf-loading .font {
+  opacity: 0.5;
+}
+
 .font:hover {
   bottom: 2px;
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.021),
@@ -46,6 +59,7 @@ p {
   font-size: 1.2rem;
 }
 .font p:nth-child(2) {
+  opacity: 1;
   font-size: 1.5rem;
 }
 .font p:last-of-type {
@@ -53,14 +67,6 @@ p {
   font-size: 1.1rem;
   font-weight: 400;
   color: gray;
-}
-nav {
-  display: flex;
-  z-index: 4;
-}
-.navWrap {
-  margin: 5rem 0;
-  overflow: visible;
 }
 
 button.btn.font {
@@ -92,4 +98,56 @@ button.btn.font:hover {
 h1,
 h2 {
   font-weight: 500;
+}
+
+/* Nav */
+nav {
+  display: flex;
+  background-color: transparent;
+}
+
+.navWrap {
+  z-index: 4;
+  position: absolute;
+  top: -px;
+  margin: 2rem 0;
+  background-color: white;
+  box-shadow: 0 4px 5px -5px gray;
+  overflow: visible;
+}
+nav input,
+button {
+  flex-shrink: 1;
+  width: 100%;
+  border: 1px solid #d3d3d3;
+
+  padding: 0;
+  margin: 0;
+  height: 3rem;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+}
+nav input:first-of-type {
+  border-radius: 50px 0px 0px 50px;
+  border-right: none;
+}
+nav input::placeholder {
+  padding: 1rem;
+  font-size: 1rem;
+  font-family: "Roboto";
+}
+nav button {
+  border: 1px solid #d3d3d3;
+  border-left: none;
+  width: 25%;
+  border-radius: 0px 50px 50px 0;
+  background-color: white;
+}
+nav button span.material-symbols-outlined {
+  transition: transform 0.15s ease-in-out;
+  font-size: 2rem;
+}
+
+nav button span:hover {
+  transform: rotate(-20deg);
 }

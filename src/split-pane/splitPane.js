@@ -71,9 +71,9 @@ export default function SplitPane({ children }) {
         onDragEnd={addMonentum}
         style={{ width: "1vw" }}
         draggable
-      ><div className="resizerImg">
-        
-        </div></div>
+      >
+        <div className="resizerImg"></div>
+      </div>
       <div
         id="leftPane"
         style={{

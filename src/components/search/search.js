@@ -5,12 +5,11 @@ import { webFontLoaderRequestArray, fontList } from "../../allGoogleFontsArray";
 import WebFont from "webfontloader";
 
 export default function Search() {
-  const [allFonts, setAllFonts] = useState(fontList);
-  const [displayAll, setDisplayAll] = useState(true);
   const [webFontLoaderRequest, setWebFontLoaderRequest] = useState(
     webFontLoaderRequestArray
   );
-  const [fetchIndex, setFetchIndex] = useState({ start: 0, end: 100 });
+  const [fetchIndex, setFetchIndex] = useState({ start: 0, end: 50 });
+  const [sampleText, setSampleText] = useState("");
 
   const requestToObjectArray = webFontLoaderRequest.map((string) => {
     return {
@@ -21,7 +20,6 @@ export default function Search() {
 
   useEffect(() => {
     console.log(webFontLoaderRequest);
-    setDisplayAll(false);
     WebFont.load({
       google: {
         families: webFontLoaderRequest.slice(fetchIndex.start, fetchIndex.end),
@@ -31,10 +29,6 @@ export default function Search() {
 
   function setNewRequest(newList) {
     setWebFontLoaderRequest(newList);
-  }
-
-  function displayNew() {
-    setDisplayAll((prev) => !prev);
   }
 
   return (
@@ -48,3 +42,6 @@ export default function Search() {
     </div>
   );
 }
+
+// const [allFonts, setAllFonts] = useState(fontList);
+// const [displayAll, setDisplayAll] = useState(true);
